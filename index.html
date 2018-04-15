@@ -1,7 +1,270 @@
 <html>
   <head>
-    <title>❤️🐱</title>
+    <title>So Many Reasons Why</title>
+    <style>
+      @keyframes glow {
+        0%, 100% {
+          text-shadow: 0 0 50px white;
+        }
+
+        50% {
+          text-shadow: 0 0 100px yellow;
+        }
+      }
+
+      .glow {
+        animation: glow 1.5s infinite;
+      }
+
+      @keyframes fadeOutLeft {
+        from {
+          opacity: 1;
+          margin-left: 0;
+        }
+
+        to {
+          opacity: 0;
+          margin-left: -1em;
+        }
+      }
+
+      @keyframes fadeOutRight {
+        from {
+          opacity: 1;
+          margin-left: 0;
+        }
+
+        to {
+          opacity: 0;
+          margin-left: 1em;
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          margin-left: -1em;
+        }
+
+        to {
+          opacity: 1;
+          margin-left: 0;
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          margin-left: 1em;
+        }
+
+        to {
+          opacity: 1;
+          margin-left: 0;
+        }
+      }
+
+      .fadeOutLeft {
+        animation-name: fadeOutLeft;
+        animation-duration: 0.5s;
+        opacity: 0;
+      }
+
+      .fadeOutRight {
+        animation-name: fadeOutRight;
+        animation-duration: 0.5s;
+        opacity: 0;
+      }
+
+      .fadeInLeft {
+        animation-name: fadeInLeft;
+        animation-duration: 0.5s;
+        opacity: 1;
+      }
+
+      #longform li.fadeInRight {
+        animation-name: fadeInRight;
+        animation-duration: 0.5s;
+        opacity: 1;
+        display: block;
+        z-index: 10;
+      }
+
+      .seen {
+      }
+
+      body {
+        background-color: black;
+        color: white;
+        font-family: helvetica, sans-serif;
+        position: relative;
+      }
+
+      ul {
+        margin: 20px;
+      }
+      canvas {
+        position: relative;
+        z-index: 0;
+        margin-bottom: 50px;
+      }
+
+      #things-i-love {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+
+        font-weight: bold;
+      }
+
+      #things-i-love ul {
+        list-style-type: none;
+        cursor: pointer;
+      }
+
+      #reasons {
+        font-size: 120px;
+      }
+
+      .back {
+        margin-top: 1em;
+        font-size: 1.5em;
+      }
+
+      #longform li {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        z-index: -1;
+        font-size: 75px;
+        display: none;
+        width: 90%;
+      }
+
+      li[reason="us"] {
+        display: none;
+      }
+    </style>
   </head>
+
   <body>
+    <canvas id="c"></canvas>
+    <script src="raytracer.js"></script>
+    <section id="things-i-love">
+      <ul id="reasons">
+        <li reason="art">Art</li>
+        <li reason="self-care">Self-Care</li>
+        <li reason="writing">Writing</li>
+        <li reason="empathy">Empathy</li>
+        <li reason="dreams">Dreams</li>
+        <li reason="chloe">Chloe</li>
+        <li reason="sex">Sex</li>
+        <li reason="us">Us</li>
+      </ul>
+      <ul id="longform">
+        <li reason="art">
+          From your self-portrait, to the amazing Christmas painting you poured yourself into, to all the beautiful tattoos you've adorned yourself with, I really appreciate the way that you surround yourself with art, along with all the art you bring into this world. I feel aesthetically at ease around you.
+          <div class="back">Back to List</div>
+        </li>
+        <li reason="self-care">
+          Whether it be thru exercise, cooking, or writing down your emotions on your blog, I admire the way that you take care of yourself. Your desire to grow continously is such an attractive part of you.
+          <div class="back">Back to List</div>
+        </li>
+        <li reason="writing">
+          Your words have a unique way of cutting directly to the truth, in a clear, loving manner that makes my heart jump with surprise. Your poems, your letters, the way you communicate your reality; I could read you, over and over, and never tire.
+          <div class="back">Back to List</div>
+        </li>
+        <li reason="empathy">
+          Last time we saw each other, you listened to me, you held me, and I felt utterly seen. Your desire to understand those around is a quality all your friends are sure to adore in you. Sharacat, you'd make a great Mama Bear.
+          <div class="back">Back to List</div>
+        </li>
+        <li reason="dreams">
+          Relationships take effort
+          Desire to grow
+          Desginer
+          <div class="back">Back to List</div>
+        </li>
+        <li reason="chloe">
+          Your love for your musubi pup
+          Something we share together
+          Your love remains strong thru all of Chloe's challenges.
+          <div class="back">Back to List</div>
+        </li>
+        <li reason="sex">
+          Everything? Just everything.
+          Phone sex - distance is no matter.
+          Open mind.
+          Have shown me so many new things arleady.
+          Has been a crutch in the past, but our bodies are so comfortable being one.
+          So many more things to try and explore. One piece where I feel we'll always be trying new things.
+          <div class="back">Back to List</div>
+        </li>
+        <li reason="us">
+          Under a year. 8 months now.
+          Challenges, so much to learn.
+          We're differnet people. Your painting did a wonderful job of illustrating that fact.
+          Weekend planning, long distance.
+          I want my life with you, I want to write out our story|lives together.
+          I love you, Sharacat.
+          <div class="back">Back to List</div>
+        </li>
+      </ul>
+    </section>
+    <script>
+      document.onList = true;
+      document.reasons = document.querySelectorAll("#reasons li");
+      document.reasons.forEach(function(el) {
+        el.addEventListener("click", function(event) {
+          // disable this after click
+          if (!document.onList) {
+            return;
+          }
+          var section = el.getAttribute("reason");
+
+          toggleReasons();
+          toggleLongform(section);
+          document.onList = false;
+        });
+      });
+
+      var backLinks = document.querySelectorAll(".back");
+      backLinks.forEach(function(el, index) {
+        var colors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red"];
+        el.addEventListener("click", function(event) {
+          var longform = el.parentElement;
+          var section = longform.getAttribute("reason");
+
+          longform.classList.remove("fadeInRight");
+          longform.classList.add("fadeOutRight");
+          reasons.classList.remove("fadeOutLeft");
+          reasons.classList.add("fadeInLeft");
+
+          var reason = document.querySelector("#reasons li[reason='" + section + "']");
+          //reason.classList.add("seen");
+          reason.style.color = colors[index];
+          reason.classList.add("seen");
+
+          if (document.querySelectorAll(".seen").length == 7) {
+            var us = document.querySelector("li[reason='us']");
+            us.style.display = "block";
+            us.classList.add("glow");
+          }
+
+          document.onList = true;
+        });
+      });
+
+      function toggleReasons() {
+        var reasons = document.querySelector("#reasons");
+        reasons.classList.remove("fadeInLeft");
+        reasons.classList.add("fadeOutLeft");
+      }
+
+      function toggleLongform(section) {
+        var longform = document.querySelector("#longform li[reason='" + section + "']");
+        longform.classList.remove("fadeOutRight");
+        longform.classList.add("fadeInRight");
+      }
+    </script>
   </body>
 </html>
