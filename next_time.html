@@ -1,0 +1,268 @@
+<html>
+  <head>
+    <title>Next time let's...</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,900" rel="stylesheet">
+    <style>
+      @keyframes scroll {
+        0% {
+          transform: translateY(-0px);
+        }
+
+        3% {
+          transform: translateY(-0px);
+        }
+
+        6% {
+          transform: translateY(-64px);
+        }
+
+        9% {
+          transform: translateY(-64px);
+        }
+
+        12% {
+          transform: translateY(-128px);
+        }
+
+        15% {
+          transform: translateY(-128px);
+        }
+
+        18% {
+          transform: translateY(-192px);
+        }
+
+        21% {
+          transform: translateY(-192px);
+        }
+
+        24% {
+          transform: translateY(-256px);
+        }
+
+        27% {
+          transform: translateY(-256px);
+        }
+
+        30% {
+          transform: translateY(-320px);
+        }
+
+        33% {
+          transform: translateY(-320px);
+        }
+
+        36% {
+          transform: translateY(-384px);
+        }
+
+        39% {
+          transform: translateY(-384px);
+        }
+
+        42% {
+          transform: translateY(-448px);
+        }
+
+        45% {
+          transform: translateY(-448px);
+        }
+
+        48% {
+          transform: translateY(-512px);
+        }
+
+        51% {
+          transform: translateY(-512px);
+        }
+
+        54% {
+          transform: translateY(-576px);
+        }
+
+        57% {
+          transform: translateY(-576px);
+        }
+
+        60% {
+          transform: translateY(-640px);
+        }
+
+        63% {
+          transform: translateY(-640px);
+        }
+
+        66% {
+          transform: translateY(-704px);
+        }
+
+        69% {
+          transform: translateY(-704px);
+        }
+
+        72% {
+          transform: translateY(-768px);
+        }
+
+        75% {
+          transform: translateY(-768px);
+        }
+
+        78% {
+          transform: translateY(-832px);
+        }
+
+        81% {
+          transform: translateY(-832px);
+        }
+
+        84% {
+          transform: translateY(-896px);
+        }
+
+        87% {
+          transform: translateY(-896px);
+        }
+
+        90% {
+          transform: translateY(-960px);
+        }
+
+        93% {
+          transform: translateY(-960px);
+        }
+
+        96% {
+          transform: translateY(-1024px);
+        }
+
+        100% {
+          transform: translateY(-1024px);
+        }
+      }
+
+      * {
+        font-family: 'Playfair Display', serif;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      a {
+        text-decoration: inherit;
+        cursor: inherit;
+        color: inherit;
+      }
+
+      #prompt {
+        font-weight: 400;
+        font-style: italic;
+        font-size: 3em;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding-top: 2em;
+      }
+
+      #ideas {
+        animation: scroll 120s infinite alternate;
+        position: relative;
+        z-index: -1;
+      }
+
+      .idea {
+        font-weight: 900;
+        font-style: black;
+        font-size: 3em;
+        text-align: center;
+        position: relative;
+        z-index: -1;
+        white-space: nowrap;
+      }
+
+      #mask {
+        width: 100%;
+        height: 10em;
+        background-color: white;
+        position: absolute;
+        z-index: 0;
+      }
+
+      #second-mask {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        position: absolute;
+        z-index: 0;
+        margin-top: 14.5em;
+      }
+
+      .gold {
+        color: gold;
+      }
+
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mask"></div>
+    <div id="second-mask"></div>
+    <section id="prompt">
+      I'd love to take you
+    </section>
+    <div id="ideas">
+      <section class="idea">
+        to a fancy dinner at <span class="red">Lazy Bear</span>
+      </section>
+      <section class="idea">
+        bike camping
+      </section>
+      <section class="idea">
+        on a hot air balloon ride
+      </section>
+      <section class="idea">
+        kayaking in Tomales Bay
+      </section>
+      <section class="idea">
+        on a road trip with the pups
+      </section>
+      <section class="idea">
+        on a "short" bike ride
+      </section>
+      <section class="idea">
+        to Burning Man
+      </section>
+      <section class="idea">
+      to an <span class="gold">erotic</span> dinner party
+      </section>
+      <section class="idea">
+        bouldering to more outdoor locations
+      </section>
+      <section class="idea">
+        to a tennis tournament
+      </section>
+      <section class="idea">
+        latin dancing
+      </section>
+      <section class="idea">
+        snowboarding
+      </section>
+      <section class="idea">
+        to more alt-rock concerts
+      </section>
+      <section class="idea">
+        on a trip to space
+      </section>
+      <section class="idea">
+        to an Ali Wong show
+      </section>
+      <section class="idea">
+        on a cooking class for 2
+      </section>
+      <section class="idea">
+        somewhere neither of us knows the language
+      </section>
+    </div>
+  </body>
+</html>
